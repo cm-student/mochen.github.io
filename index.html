@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'MiSans VF';
+      src: url('assets/fonts/MiSans-VF.woff2') format('woff2');
+      font-weight: 100 900;
+      font-style: normal;
+    }
+  </style>
+  <title>Mo CHEN's Website</title>
+  <style>
+    /* Reset & Global */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-family: 'MiSans VF', sans-serif; }
+    body { overflow-x: hidden; }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      min-height: 50px;
+      background-color: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      transition: background-color 0.5s ease, backdrop-filter 0.5s ease;
+    }
+    nav .logo {
+      font-family: 'MiSans VF', sans-serif;
+      font-size: 1.5rem;
+      font-weight: bold;
+      white-space: nowrap;
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    nav ul {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    nav ul li {
+      display: flex;
+      align-items: center;
+    }
+    nav .cta a {
+      padding: 0.5rem 1rem;
+      background-color: #4a5e26;
+      color: #fff;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* Blog CTA Button */
+    .cta-button {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(45deg, #4a5e26, #6fa350);
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 50px;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    .cta-button:hover {
+      background: linear-gradient(45deg, #6fa350, #4a5e26);
+      transform: translateY(-2px);
+    }
+
+    /* Language Switch Button */
+    nav .lang-switch {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 50%;
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    nav .lang-switch svg {
+      display: block;
+      width: 1.5rem;
+      height: 1.5rem;
+      stroke: #333;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    /* Keep nav links and icon on one line */
+    nav > .container {
+      flex: 1;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      width: auto;
+      margin: 0;
+      border: 2px solid transparent;
+      transition: border-color 0.5s ease, background-color 0.5s ease, box-shadow 0.5s ease;
+      transition: all 0.5s ease;
+    }
+
+    /* Sections */
+    section:not(#hero) {
+      padding: 5rem 2rem;
+    }
+    section:nth-of-type(even) {
+      background-color: #f9f9f9;
+    }
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    section p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* Centered fluid container */
+    .container {
+      width: 100%;
+      max-width: none;
+      padding: 0 2rem;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* Self-Introduction section */
+    #Introduction .container {
+      text-align: left;
+    }
+    /* Center the Self-Introduction title */
+    #Introduction h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    /* Left-align Project section */
+    #Project .container {
+      text-align: left;
+    }
+
+    /* Center the Project title */
+    #Project h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    /* Spacer after first project group */
+    #Project #para-project-resp1 {
+      margin-bottom: 1.5rem;
+    }
+
+    /* Indent project description and responsibility paragraphs */
+    #Project #para-project-desc1,
+    #Project #para-project-resp1,
+    #Project #para-project-resp2 {
+      margin-left: 10.5ch;
+    }
+
+    /* Scrolled Navbar */
+    nav.scrolled {
+      justify-content: space-between;
+      background-color: transparent;
+      backdrop-filter: none;
+    }
+    nav.scrolled .container {
+      background-color: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(5px);
+      border-radius: 9999px;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      max-width: 1600px;
+      margin: 0 auto;
+      border: 2px solid rgba(255,255,255,0.4);
+      box-shadow: 0 0 20px rgba(82, 82, 82, 0.5);
+      transition: all 0.5s ease;
+    }
+    nav.scrolled .logo,
+    nav.scrolled .lang-switch {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+
+    /* Split hero with video on left and image on right */
+    #hero {
+      position: relative;
+      overflow: hidden;     
+      padding: 0;
+    }
+    .hero-wrapper {
+      display: flex;
+      width: 100vw;
+      height: 120vh;
+      margin: 0;
+    }
+    .hero-left,
+    .hero-right {
+      flex: 1;
+      position: relative;
+    }
+    .hero-left {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding-left: 5%;
+    }
+    .hero-left .bg-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    /*
+    .hero-left #hero-title {
+      position: relative;
+      z-index: 1;
+      color: #fff;
+      padding: 2rem;
+      font-size: 4rem;
+    }
+    */
+    .hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      will-change: transform;
+      transform: translateY(0);
+      transition: transform 0.1s ease-out;
+    }
+    @media (max-width: 768px) {
+      .hero-wrapper {
+        flex-direction: column;
+      }
+      .hero-left,
+      .hero-right {
+        height: 50vh;
+      }
+      /*
+      .hero-left #hero-title {
+        font-size: 2.5rem;
+      }
+      */
+    }
+
+    #Introduction {
+      margin-top: -50px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Hero text styling */
+    .hero-text {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      text-align: left;
+    }
+    .script-text {
+      font-family: 'Pacifico', cursive !important;
+      font-size: 2.5rem;
+      color: #104b25;
+      margin: 0;
+      margin-bottom: 0.5rem;
+    }
+    .name-text {
+      font-family: 'MiSans VF', sans-serif;
+      font-size: 6rem;
+      line-height: 1;
+      font-weight: 700;
+      color: #fff;
+      margin: 0.25rem 0;
+    }
+    .role-text {
+      font-family: 'MiSans VF', sans-serif;
+      font-size: 1.125rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: #fff;
+      text-transform: uppercase;
+      margin: 0.5rem 0 0;
+    }
+
+    /* When viewport is narrow, let the container sit in normal flow so it won't cover logo/toggle */
+    @media (max-width: 900px) {
+      nav > .container {
+        position: static;
+        top: auto;
+        left: auto;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo" id="logo">Mo CHEN</div>
+    <div class="container">
+      <ul>
+        <li><a id="nav-intro" href="#Introduction">Self-Introduction</a></li>
+        <li><a id="nav-project" href="#Project">Project</a></li>
+        <li><a id="nav-blog" href="#Blog">Blog</a></li>
+        <li><a id="nav-hobbies" href="#Hobbies">Hobbies</a></li>
+        <li><a id="nav-contact" href="#contact">Contact Me</a></li>
+      </ul>
+    </div>
+    <button class="lang-switch" aria-label="Switch Language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="2" y1="12" x2="22" y2="12"/>
+        <path d="M12 2a15.3 15.3 0 0 1 0 20"/>
+        <path d="M12 2a15.3 15.3 0 0 0 0 20"/>
+      </svg>
+    </button>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-wrapper">
+      <div class="hero-left">
+        <video autoplay muted loop playsinline class="bg-video">
+          <source src="assets/video_hero.mp4" type="video/mp4" />
+        </video>
+      <div class="hero-text">
+        <p id="hero-greeting" class="script-text">Hey, I'm</p>
+        <h1 id="hero-name1" class="name-text">Mo</h1>
+        <h1 id="hero-name2" class="name-text">CHEN</h1>
+        <p id="hero-role" class="role-text">Undergraduate in ECE</p>
+      </div>
+      </div>
+      <div class="hero-right">
+        <img src="assets/photo_hero.jpg" alt="Hero Image" />
+      </div>
+    </div>
+  </section>
+
+  <section id="Introduction">
+    <div class="container">
+    <h2 id="heading-intro">Self-Introduction</h2>
+    <p id="para-intro-1">I'm Mo CHEN, a year-one student in the Chinese University of Hong Kong, Shenzhen (CUHK-Shenzhen). I majored in Electronic and Computer Engineering, Electronic Engineering Stream.</p>
+    <p id="para-intro-2"> My interest includes Large Language Model (LLM), Embodied Intelligence, and Integrated Circuit (IC) Design.</p>
+    </div>
+  </section>
+
+  <section id="Project">
+    <div class="container">
+    <h2 id="heading-project">Project Experience</h2>
+    <p id="para-project">2025.2 - Now Udergraduate RA in Engibench, a Professor Zhao Junhua's Research Group </p>
+    <p id="para-project-desc1">Engibench focuses on benchmarking and evaluation of LLMs.</p>
+    <p id="para-project-resp1">In this project, I was responsible for collecting, organizing and rewriting knowledge in the field of Structural and Mechanical Systems Engineering.</p>
+    <p id="para-project-2">2025.6 - Now AI Intern, Internship at Shenzhen Guixu Robotics Corporation</p>
+    <p id="para-project-resp2">In this internship, I was responsible for the research of LLM emotion evaluation, recognition and construction, and the possible deployment path of emotional LLM on the "Feiyan" Robot.</p>
+    </div>
+  </section>
+
+  <section id="Blog">
+    <div class="container">
+    <h2 id="heading-blog">Blog</h2>
+    <p id="para-blog">Read the blog article below.</p>
+    <a id="btn-blog" class="cta-button" href="/blog.html">Read Blog</a>
+    </div>
+  </section>
+
+  <section id="Hobbies">
+    <div class="container">
+      <h2 id="heading-hobbies">Hobbies</h2>
+      <p id="para-hobbies">In my spare time, I enjoy taking photos, shooting videos, and exploring the world.</p>
+      <a id="btn-hobbies" class="cta-button" href="/hobbies.html">Explore My Hobbies</a>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+    <h2 id="heading-contact">Contact Me</h2>
+    <p id="para-contact">Contact me via email</p>
+    <p id="para-contact-email">Email:mochen@cuhk.edu.cn</p>
+    </div>
+  </section>
+
+  <script>
+    const translations = {
+      en: {
+        logo: 'Mo CHEN',
+        'nav-intro': 'Self-Introduction',
+        'nav-project': 'Project',
+        'nav-blog': 'Blog',
+        'nav-hobbies': 'Hobbies',
+        'nav-contact': 'Contact Me',
+        'heading-intro': 'Self-Introduction',
+        'para-intro-1': "I'm Mo CHEN, a year-one student in the Chinese University of Hong Kong, Shenzhen (CUHK-Shenzhen). I majored in Electronic and Computer Engineering, Electronic Engineering Stream.",
+        'para-intro-2': 'My interest includes Large Language Model (LLM), Embodied Intelligence, and Integrated Circuit (IC) Design.',
+        'heading-project': 'Project Experience',
+        'para-project': "2025.2 - Now Udergraduate RA in Engibench, a Professor Zhao Junhua's Research Group.",
+        'para-project-desc1': 'Engibench focuses on benchmarking and evaluation of LLMs.',
+        'para-project-resp1': 'In this project, I was responsible for collecting, organizing and rewriting knowledge in the field of Structural and Mechanical Systems Engineering.',
+        'para-project-2': '2025.6 - Now AI Intern, Internship at Shenzhen Guixu Robotics Corporation',
+        'para-project-resp2': 'In this internship, I was responsible for the research of LLM emotion evaluation, recognition and construction, and the possible deployment path of emotional LLM on the "Feiyan" Robot.',
+        'heading-blog': 'Blog',
+        'para-blog': 'Read the blog article below.',
+        'btn-blog': 'Read Blog',
+        'heading-contact': 'Contact Me',
+        'para-contact': 'Contact me via email',
+        'para-contact-email': 'Email:mochen@link.cuhk.edu.cn',
+        'hero-greeting': "Hey, I'm",
+        'hero-name1': 'Mo',
+        'hero-name2': 'CHEN',
+        'hero-role': 'Undergraduate in ECE',
+        'heading-hobbies': 'Hobbies',
+        'para-hobbies': 'In my spare time, I enjoy taking photos, shooting videos, and exploring the world.',
+        'btn-hobbies': 'Explore My Hobbies',
+      },
+      zh: {
+        logo: 'Mo CHEN',
+        'nav-intro': '自我介绍',
+        'nav-project': '项目经验',
+        'nav-blog': '博客',
+        'nav-hobbies': '兴趣爱好',
+        'nav-contact': '联系我',
+        'heading-intro': '自我介绍',
+        'para-intro-1': '我是陈默，一名香港中文大学（深圳）的一年级学生，现就读于电子与计算机工程专业，电子工程方向。',
+        'para-intro-2': '我的兴趣包括大语言模型 (LLM) 、具身智能和集成电路设计。',
+        'heading-project': '项目经验',
+        'para-project': '2025.2 - 至今 Engibench课题组本科生研究助理，赵俊华教授课题组',
+        'para-project-desc1': 'Engibench 课题组专注于 LLM 的基准测试和评估。',
+        'para-project-resp1': '在该项目中，我负责结构与机械系统工程领域知识的收集、整理和重写。',
+        'para-project-2': '2025.6 - 至今 在深圳归墟机器人股份有限公司担任AI实习生',
+        'para-project-resp2': '在此次实习中，我负责 LLM 情感评估、识别与构建的研究，以及在“飞燕”机器人上部署情感化 LLM 的可能路径。',
+        'heading-blog': '博客',
+        'para-blog': '最新的博客文章如下。',
+        'btn-blog': '阅读博客',
+        'heading-contact': '联系我',
+        'para-contact': '通过邮箱联系我',
+        'para-contact-email': 'Email:mochen@link.cuhk.edu.cn',
+        'hero-greeting': "Hey, I'm",
+        'hero-name1': 'Mo',
+        'hero-name2': 'CHEN',
+        'hero-role': '电子与计算机工程专业本科生',
+        'heading-hobbies': '兴趣爱好',
+        'para-hobbies': '业余时间，我喜欢摄影、拍摄视频和旅游。',
+        'btn-hobbies': '查看兴趣',
+      }
+    };
+
+    let currentLang = 'en';
+    const switchBtn = document.querySelector('.lang-switch');
+
+    function applyTranslations() {
+      document.documentElement.lang = currentLang;
+      Object.entries(translations[currentLang]).forEach(([id, text]) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = text;
+      });
+    }
+
+    // Apply initial translation
+    applyTranslations();
+
+    switchBtn.addEventListener('click', () => {
+      currentLang = currentLang === 'en' ? 'zh' : 'en';
+      applyTranslations();
+    });
+  </script>
+  <script>
+    window.addEventListener('load', () => {
+      const navEl = document.querySelector('nav');
+      const wrapper = document.querySelector('.hero-wrapper');
+      const navHeight = navEl.offsetHeight;
+      wrapper.style.marginTop = `${navHeight}px`;
+      wrapper.style.height = `calc(120vh - ${navHeight}px)`;
+    });
+  </script>
+  <script>
+    window.addEventListener('scroll', () => {
+      const navEl = document.querySelector('nav');
+      // Trigger scrolled state as soon as user scrolls past the nav height
+      const threshold = navEl.offsetHeight;
+      if (window.scrollY > threshold) {
+        navEl.classList.add('scrolled');
+      } else {
+        navEl.classList.remove('scrolled');
+      }
+      // Parallax effect: photo moves slower than scroll
+      const heroImg = document.querySelector('.hero-right img');
+      heroImg.style.transform = `translateY(${window.scrollY * 0.5}px)`;
+    });
+  </script>
+</body>
+</html>

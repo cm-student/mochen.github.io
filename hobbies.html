@@ -31,16 +31,9 @@
           font-style: normal;
           font-display: swap;
         }
-        @font-face {
-          font-family: 'MiSans VF';
-          src: url('assets/fonts/MiSans-VF.woff2') format('woff2');
-          font-weight: 100 900;
-          font-style: normal;
-          font-display: swap;
-        }
         /* Global styles */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; font-family: 'MiSans-Regular', 'MiSans VF', sans-serif; }
+        html { scroll-behavior: smooth; font-family: 'MiSans-Regular', sans-serif; }
         body { overflow-x: hidden; }
 
         /* Navigation */
@@ -53,7 +46,7 @@
             transition: background-color 0.5s ease, backdrop-filter 0.5s ease;
         }
         nav .logo {
-            font-family: 'MiSans-Bold', 'MiSans VF', sans-serif;
+            font-family: 'MiSans-Bold', sans-serif;
             font-size: 1.5rem; font-weight: bold;
             white-space: nowrap; color: #434343;
             transition: opacity 0.5s ease, transform 0.5s ease;
@@ -90,7 +83,7 @@
         nav ul li a {
             text-decoration: none; color: #333; font-weight: 500;
             white-space: nowrap;
-            font-family: 'MiSans-Regular', 'MiSans VF', sans-serif;
+            font-family: 'MiSans-Regular', sans-serif;
         }
 
         /* Scrolled navbar */
@@ -119,7 +112,7 @@
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 2rem;
-            font-family: 'MiSans-Bold', 'MiSans VF', sans-serif;
+            font-family: 'MiSans-Bold', sans-serif;
         }
 
         /* Hobby sections */
@@ -131,7 +124,7 @@
             font-size: 1.75rem;
             margin-bottom: 2rem;
             text-align: center;
-            font-family: 'MiSans-Bold', 'MiSans VF', sans-serif;
+            font-family: 'MiSans-Bold', sans-serif;
         }
 
         /* Photography gallery */
@@ -156,7 +149,7 @@
             height: 250px;
             object-fit: cover;
             transition: transform 0.3s ease;
-            font-family: 'MiSans-Light', 'MiSans VF', sans-serif;
+            font-family: 'MiSans-Light', sans-serif;
         }
         .gallery-item:hover img {
             transform: scale(1.1);
@@ -181,7 +174,7 @@
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             margin: 20px auto;
-            font-family: 'MiSans-Bold', 'MiSans VF', sans-serif;
+            font-family: 'MiSans-Bold', sans-serif;
         }
         .video-button:hover {
             transform: translateY(-3px);
@@ -197,7 +190,7 @@
         /* Language toggle styles */
         .zh { display: none; }
         .show-zh .en { display: none; }
-        .show-zh .zh { display: inline; font-family: 'MiSans-Regular', 'MiSans VF', sans-serif; }
+        .show-zh .zh { display: inline; font-family: 'MiSans-Regular', sans-serif; }
 
         nav button#lang-toggle {
             background: transparent;

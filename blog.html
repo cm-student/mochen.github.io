@@ -7,8 +7,41 @@
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
   <style>
     /* Copy in your site’s global/reset/nav styles here… */
+    /* MiSans Font Faces */
+    @font-face {
+      font-family: 'MiSans-Bold';
+      src: url('assets/fonts/MiSans-Bold.woff2') format('woff2'),
+           url('assets/fonts/MiSans-Bold.woff') format('woff');
+      font-weight: bold;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'MiSans-Regular';
+      src: url('assets/fonts/MiSans-Regular.woff2') format('woff2'),
+           url('assets/fonts/MiSans-Regular.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'MiSans-Light';
+      src: url('assets/fonts/MiSans-Light.woff2') format('woff2'),
+           url('assets/fonts/MiSans-Light.woff') format('woff');
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'MiSans VF';
+      src: url('assets/fonts/MiSans-VF.woff2') format('woff2');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; font-family: 'MiSans VF', sans-serif; }
+    html { scroll-behavior: smooth; font-family: 'MiSans-Regular', 'MiSans VF', sans-serif; }
     body { overflow-x: hidden; }
 
     /* Navigation */
@@ -21,7 +54,7 @@
       transition: background-color 0.5s ease, backdrop-filter 0.5s ease;
     }
     nav .logo {
-      font-family: 'MiSans VF', sans-serif;
+      font-family: 'MiSans-Bold', 'MiSans VF', sans-serif;
       font-size: 1.5rem; font-weight: bold;
       white-space: nowrap; color: #434343;
       transition: opacity 0.5s ease, transform 0.5s ease;
@@ -63,6 +96,7 @@
     nav ul li a {
       text-decoration: none; color: #333; font-weight: 500;
       white-space: nowrap;
+      font-family: 'MiSans-Regular', 'MiSans VF', sans-serif;
     }
 
     /* Scrolled navbar */
@@ -88,16 +122,42 @@
 
     .container { width: 100%; max-width: none; padding: 0 2rem; margin: 0 auto; }
     section { padding: 6rem 2rem; }
-    h2 { text-align: center; font-size: 2.5rem; margin-bottom: 2rem; }
+    h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      font-family: 'MiSans-Bold', 'MiSans VF', sans-serif;
+    }
     article { max-width: 800px; margin: 0 auto 4rem; }
-    article h3 { font-size: 1.75rem; margin-bottom: 0.5rem; }
-    article time { display: block; font-size: 0.875rem; color: #666; margin-bottom: 1rem; }
-    article p { font-size: 1rem; line-height: 1.6; margin-bottom: 1.5rem; }
+    article h3 {
+      font-size: 1.75rem;
+      margin-bottom: 0.5rem;
+      font-family: 'MiSans-Bold', 'MiSans VF', sans-serif;
+    }
+    article h3 small,
+    article h3 .zh {
+      font-family: 'MiSans-Regular', 'MiSans VF', sans-serif;
+      font-weight: normal;
+    }
+    article time {
+      display: block;
+      font-size: 0.875rem;
+      color: #666;
+      margin-bottom: 1rem;
+      font-family: 'MiSans-Light', 'MiSans VF', sans-serif;
+    }
+    article p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      font-family: 'MiSans-Light', 'MiSans VF', sans-serif;
+    }
     article a.read-more {
       display: inline-block; text-decoration: none;
       color: #4a5e26; font-weight: 600;
       border-bottom: 2px solid transparent;
       transition: border-color 0.2s ease;
+      font-family: 'MiSans-Bold', 'MiSans VF', sans-serif;
     }
     article a.read-more:hover {
       border-color: #4a5e26;

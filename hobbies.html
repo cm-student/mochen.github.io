@@ -6,9 +6,41 @@
     <title>Hobbies – Mo CHEN</title>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
     <style>
+        /* MiSans Font Faces */
+        @font-face {
+          font-family: 'MiSans-Bold';
+          src: url('assets/fonts/MiSans-Bold.woff2') format('woff2'),
+               url('assets/fonts/MiSans-Bold.woff') format('woff');
+          font-weight: bold;
+          font-style: normal;
+          font-display: swap;
+        }
+        @font-face {
+          font-family: 'MiSans-Regular';
+          src: url('assets/fonts/MiSans-Regular.woff2') format('woff2'),
+               url('assets/fonts/MiSans-Regular.woff') format('woff');
+          font-weight: normal;
+          font-style: normal;
+          font-display: swap;
+        }
+        @font-face {
+          font-family: 'MiSans-Light';
+          src: url('assets/fonts/MiSans-Light.woff2') format('woff2'),
+               url('assets/fonts/MiSans-Light.woff') format('woff');
+          font-weight: 300;
+          font-style: normal;
+          font-display: swap;
+        }
+        @font-face {
+          font-family: 'MiSans VF';
+          src: url('assets/fonts/MiSans-VF.woff2') format('woff2');
+          font-weight: 100 900;
+          font-style: normal;
+          font-display: swap;
+        }
         /* Global styles */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; font-family: 'MiSans VF', sans-serif; }
+        html { scroll-behavior: smooth; font-family: 'MiSans-Regular', 'MiSans VF', sans-serif; }
         body { overflow-x: hidden; }
 
         /* Navigation */
@@ -21,7 +53,7 @@
             transition: background-color 0.5s ease, backdrop-filter 0.5s ease;
         }
         nav .logo {
-            font-family: 'MiSans VF', sans-serif;
+            font-family: 'MiSans-Bold', 'MiSans VF', sans-serif;
             font-size: 1.5rem; font-weight: bold;
             white-space: nowrap; color: #434343;
             transition: opacity 0.5s ease, transform 0.5s ease;
@@ -58,6 +90,7 @@
         nav ul li a {
             text-decoration: none; color: #333; font-weight: 500;
             white-space: nowrap;
+            font-family: 'MiSans-Regular', 'MiSans VF', sans-serif;
         }
 
         /* Scrolled navbar */
@@ -82,7 +115,12 @@
 
         .container { width: 100%; max-width: none; padding: 0 2rem; margin: 0 auto; }
         section { padding: 6rem 2rem; }
-        h2 { text-align: center; font-size: 2.5rem; margin-bottom: 2rem; }
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            font-family: 'MiSans-Bold', 'MiSans VF', sans-serif;
+        }
 
         /* Hobby sections */
         .hobby-section {
@@ -93,6 +131,7 @@
             font-size: 1.75rem;
             margin-bottom: 2rem;
             text-align: center;
+            font-family: 'MiSans-Bold', 'MiSans VF', sans-serif;
         }
 
         /* Photography gallery */
@@ -117,6 +156,7 @@
             height: 250px;
             object-fit: cover;
             transition: transform 0.3s ease;
+            font-family: 'MiSans-Light', 'MiSans VF', sans-serif;
         }
         .gallery-item:hover img {
             transform: scale(1.1);
@@ -141,6 +181,7 @@
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             margin: 20px auto;
+            font-family: 'MiSans-Bold', 'MiSans VF', sans-serif;
         }
         .video-button:hover {
             transform: translateY(-3px);
@@ -156,7 +197,7 @@
         /* Language toggle styles */
         .zh { display: none; }
         .show-zh .en { display: none; }
-        .show-zh .zh { display: inline; }
+        .show-zh .zh { display: inline; font-family: 'MiSans-Regular', 'MiSans VF', sans-serif; }
 
         nav button#lang-toggle {
             background: transparent;
